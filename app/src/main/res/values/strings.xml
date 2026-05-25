@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">COP · USD</string>
-    <string name="splash_tagline">Colombian Peso Calculator</string>
-    <string name="powered_by">Rates by Coinbase</string>
-    <string name="hint_cop">0</string>
-    <string name="hint_usd">0.000000</string>
-    <string name="live_rate">Live Rate</string>
-    <string name="refresh">Refresh Rate</string>
-    <string name="clear">Clear</string>
-</resources>
+  <resources>
+      <string name="app_name">Colombian Peso to Usd Calculator</string>
+      <string name="splash_tagline">Colombian Peso Calculator</string>
+      <string name="powered_by">Rates by Coinbase</string>
+      <string name="hint_cop">0</string>
+      <string name="hint_usd">0.000000</string>
+      <string name="live_rate">Live Rate</string>
+      <string name="refresh">Refresh Rate</string>
+      <string name="clear">Clear</string>
+  </resources>
+  
