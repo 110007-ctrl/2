@@ -86,7 +86,7 @@
                         android:visibility="visible" />
 
                     <ImageButton
-                        android:id="@+id/btnRefresh"
+                        android:id="@+id/btnRefreshRate"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:src="@drawable/ic_refresh"

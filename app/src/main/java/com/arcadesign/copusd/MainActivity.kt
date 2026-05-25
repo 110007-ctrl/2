@@ -103,9 +103,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         // Refresh button
-        binding.btnRefresh.setOnClickListener {
+        binding.btnRefreshRate.setOnClickListener {
             val spin = AnimationUtils.loadAnimation(this, R.anim.spin)
-            binding.btnRefresh.startAnimation(spin)
+            binding.btnRefreshRate.startAnimation(spin)
             fetchExchangeRate()
         }
 
