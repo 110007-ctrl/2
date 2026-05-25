@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light"
+    android:fitsSystemWindows="true">
+
+    <!-- ═══════════ HEADER / RATE CARD ═══════════ -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_gradient"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COP · USD"
+            android:textSize="11sp"
+            android:textColor="#80FFFFFF"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.18"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Currency Converter"
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-bold"
+            android:layout_marginTop="2dp" />
+
+        <!-- Rate banner -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#22FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Live dot -->
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/circle_green"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvRateStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Connecting…"
+                        android:textSize="11sp"
+                        android:textColor="#CCFFFFFF"
+                        android:fontFamily="sans-serif" />
+
+                    <ProgressBar
+                        android:id="@+id/progressRate"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="visible" />
+
+                    <ImageButton
+                        android:id="@+id/btnRefresh"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_refresh"
+                        android:background="@android:color/transparent"
+                        android:tint="@color/white"
+                        android:contentDescription="Refresh rate"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 COP = 0.000269 USD"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginTop="4dp"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/tvLastUpdated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="10sp"
+                    android:textColor="#80FFFFFF"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <!-- ═══════════ SCROLLABLE CONTENT ═══════════ -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
+        android:overScrollMode="never"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp">
+
+            <!-- ─── CONVERTER CARD ─── -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardConverter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- COP INPUT -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🇨🇴  Colombian Peso"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.04"
+                        android:textAllCaps="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/input_bg"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="COP"
+                            android:textSize="14sp"
+                            android:textColor="@color/blue_primary"
+                            android:fontFamily="sans-serif-bold"
+                            android:layout_marginEnd="10dp" />
+
+                        <EditText
+                            android:id="@+id/etCop"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:hint="0"
+                            android:textSize="24sp"
+                            android:textColor="@color/text_primary"
+                            android:hintTextColor="@color/text_hint"
+                            android:fontFamily="sans-serif-light"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="end|center_vertical"
+                            android:imeOptions="actionDone" />
+                    </LinearLayout>
+
+                    <!-- SWAP indicator -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/divider_color" />
+
+                        <TextView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/swap_circle"
+                            android:text="⇅"
+                            android:textSize="16sp"
+                            android:textColor="@color/blue_primary"
+                            android:gravity="center"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/divider_color" />
+                    </LinearLayout>
+
+                    <!-- USD INPUT -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🇺🇸  US Dollar"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.04"
+                        android:textAllCaps="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/input_bg_green"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="USD"
+                            android:textSize="14sp"
+                            android:textColor="@color/green_success"
+                            android:fontFamily="sans-serif-bold"
+                            android:layout_marginEnd="10dp" />
+
+                        <EditText
+                            android:id="@+id/etUsd"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:hint="0.00"
+                            android:textSize="24sp"
+                            android:textColor="@color/text_primary"
+                            android:hintTextColor="@color/text_hint"
+                            android:fontFamily="sans-serif-light"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="end|center_vertical"
+                            android:imeOptions="actionDone" />
+                    </LinearLayout>
+
+                    <!-- Conversion note -->
+                    <TextView
+                        android:id="@+id/tvConversionNote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/blue_primary"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginTop="12dp"
+                        android:layout_gravity="end" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ─── QUICK AMOUNTS ─── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quick amounts (COP)"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.06"
+                android:textAllCaps="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btn1k"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="$1K"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/blue_primary"
+                    android:textColor="@color/blue_primary"
+                    app:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/btn10k"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="$10K"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/blue_primary"
+                    android:textColor="@color/blue_primary"
+                    app:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/btn50k"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:text="$50K"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/blue_primary"
+                    android:textColor="@color/blue_primary"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <!-- Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btn100k"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="$100K"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/blue_primary"
+                    android:textColor="@color/blue_primary"
+                    app:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/btn500k"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="$500K"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/blue_primary"
+                    android:textColor="@color/blue_primary"
+                    app:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/btn1m"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:text="$1M"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/blue_primary"
+                    android:textColor="@color/blue_primary"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <!-- ─── ACTION BUTTONS ─── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/btnClear"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Clear"
+                    android:textSize="15sp"
+                    app:strokeColor="@color/divider_color"
+                    android:textColor="@color/text_secondary"
+                    app:cornerRadius="14dp" />
+
+                <Button
+                    android:id="@+id/btnRefresh"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/btn_blue"
+                    android:text="↻  Refresh Rate"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-medium" />
+            </LinearLayout>
+
+            <!-- Footer -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exchange rates from Coinbase • For reference only"
+                android:textSize="11sp"
+                android:textColor="@color/text_hint"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
